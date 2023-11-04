@@ -1,9 +1,37 @@
 import jdistlib.Binomial;
 import jdistlib.Normal;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args){
-        System.out.println(calculoPlanMuestreo_casoI(.01,.12,.1,.14).toString());
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese si es caso 1 o 2: ");
+        int caso = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Ingrese alfa: ");
+        double alfa = sc.nextDouble();
+        sc.nextLine();
+        System.out.println("Ingrese p0: ");
+        double p0 = sc.nextDouble();
+        sc.nextLine();
+        System.out.println("Ingrese beta: ");
+        double beta = sc.nextDouble();
+        sc.nextLine();
+        System.out.println("Ingrese p1: ");
+        double p1 = sc.nextDouble();
+
+        switch (caso){
+            case 1:
+                System.out.println(calculoPlanMuestreo_casoI(alfa,p0,beta,p1).toString());
+                break;
+
+            case 2:
+                System.out.println(calculoPlanMuestreo_casoII(alfa,p0,beta,p1).toString());
+                break;
+        }
+
+
     }
 
     public static ResultadoBinomial calculoPlanMuestreo_casoI(double alfa, double p0, double beta, double p1){
